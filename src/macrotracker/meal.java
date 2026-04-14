@@ -3,13 +3,14 @@ import java.util.ArrayList;
 
 public class Meal{
     ArrayList<Food> foods;
-
+    protected String name;
     protected int totalCals;
     protected int totalProtein;
     protected int totalFat;
     protected int totalCarbs;
 
-    public Meal(int totalCals, int totalCarbs, int totalFat, int totalProtein){
+    public Meal(String name,int totalCals, int totalCarbs, int totalFat, int totalProtein){
+        this.name = name;
         this.totalCals = totalCals;
         this.totalCarbs = totalCarbs;
         this.totalFat = totalFat;
@@ -23,6 +24,15 @@ public class Meal{
         totalProtein += food.getProtein();
         totalFat += food.getFat();
         totalCarbs += food.getCarb();
+    }
+    
+    @Override 
+    public String toString(){
+        StringBuilder sb = new StringBuilder(name);
+       for (Food food : foods) {
+           sb.append(food.toString());
+       }
+        return sb.toString();
     }
 
         

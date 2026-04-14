@@ -1,6 +1,6 @@
 package exercisetracker;
 
-public class workout{
+public class Workout{
 
 
     

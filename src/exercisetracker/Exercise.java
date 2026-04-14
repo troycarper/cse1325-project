@@ -12,7 +12,7 @@ public class Exercise{
     //rate a procived exertion(1-10 scale) 
     protected int rpe;
 
-    protected TypeOfExercise exerciseType;
+    public TypeOfExercise exerciseType;
 
     public Exercise(int reps,int sets,int rpe,TypeOfExercise exerciseType) {
         this.reps= reps;
