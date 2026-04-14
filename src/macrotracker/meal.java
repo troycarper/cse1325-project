@@ -1,21 +1,29 @@
 package macrotracker;
 import java.util.ArrayList;
-import macrotacker.food;
 
-public class meal extends food {
-    Arraylist<food> foods  = new ArrayList<food>();
+public class Meal{
+    ArrayList<Food> foods;
 
-    totalCals;
-    totalProtein;
-    totalFat;
-    totalCarbs;
-    public meal(){
-        super(calories, protein, fat, carb);
+    protected int totalCals;
+    protected int totalProtein;
+    protected int totalFat;
+    protected int totalCarbs;
 
+    public Meal(int totalCals, int totalCarbs, int totalFat, int totalProtein){
+        this.totalCals = totalCals;
+        this.totalCarbs = totalCarbs;
+        this.totalFat = totalFat;
+        this.totalProtein = totalProtein;
     }
 
-    public addFood(food Food){
-        foods.add(Food);
+    public void addFood(Food food){
+        foods.add(food);
+
+        totalCals += food.getCalories();
+        totalProtein += food.getProtein();
+        totalFat += food.getFat();
+        totalCarbs += food.getCarb();
     }
 
+        
 }
