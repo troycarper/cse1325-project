@@ -1,16 +1,18 @@
 package macrotracker;
 import java.util.ArrayList;
-
+enum MealType{
+    Breakfast,Lunch,Dinner,Snack
+}
 public class Meal{
     ArrayList<Food> foods;
-    protected String name;
+    protected MealType mealType;
     protected int totalCals;
     protected int totalProtein;
     protected int totalFat;
     protected int totalCarbs;
 
-    public Meal(String name,int totalCals, int totalCarbs, int totalFat, int totalProtein){
-        this.name = name;
+    public Meal(MealType mealType,int totalCals, int totalCarbs, int totalFat, int totalProtein){
+        this.mealType = mealType;
         this.totalCals = totalCals;
         this.totalCarbs = totalCarbs;
         this.totalFat = totalFat;
@@ -28,7 +30,7 @@ public class Meal{
     
     @Override 
     public String toString(){
-        StringBuilder sb = new StringBuilder(name);
+        StringBuilder sb = new StringBuilder(mealType.toString());
        for (Food food : foods) {
            sb.append(food.toString());
        }
