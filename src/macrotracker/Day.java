@@ -1,6 +1,5 @@
 package macrotracker;
 import java.util.ArrayList;
-
 public class Day{
     ArrayList<Meal> meals;
     protected String date;
@@ -19,7 +18,9 @@ public class Day{
         fatGoal = fatGoal - meal.totalFat;
         proteinGoal = proteinGoal - meal.totalProtein;
     }
-
+    public void editMeal(Meal meal){
+       
+    }
     @Override 
     public String toString(){
         StringBuilder sb = new StringBuilder(date);

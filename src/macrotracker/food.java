@@ -1,4 +1,8 @@
 package macrotracker;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Food{
     protected String name;
     protected int calories;
@@ -34,8 +38,19 @@ public int getCarb() {
     return carb;
 }
 
+public void saveFood() {
+    try {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("food.txt", true)); // true = append
+        writer.write(this.toString());
+        writer.newLine(); // move to next line
+        writer.close();
+    } catch (IOException e) {
+        System.out.println("Error saving food to file.");
+    }
+}
+
 @Override
-public String toString() {
+public String toString() {  
     return name + " {" +
             "Calories=" + calories +
             ", Protein=" + protein + "g" +
