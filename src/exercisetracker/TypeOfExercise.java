@@ -1,3 +1,5 @@
-enum TypeOfExercise{
-    squat,hinge,row,press;
+package exercisetracker;
+
+public enum TypeOfExercise {
+    CHEST, BACK, LEGS, SHOULDERS, ARMS
 }
