@@ -1,58 +1,35 @@
 package exercisetracker;
 
-enum TypeOfExercise{
-    //squat,hinge,row,press;
-    chest,back,leg,shoulders,arms
-}
+public class Exercise {
 
-public class Exercise{
-    protected String exerciseName;
-    protected int reps;
-    protected int sets;
-    //rate a procived exertion(1-10 scale) 
-    protected int rpe;
+    private String name;
+    private int reps;
+    private int sets;
+    private int rpe;
+    private TypeOfExercise type;
 
-    public TypeOfExercise exerciseType;
-
-    public Exercise(int reps,int sets,int rpe,TypeOfExercise exerciseType) {
-        this.reps= reps;
+    public Exercise(String name, int reps, int sets, int rpe, TypeOfExercise type) {
+        this.name = name;
+        this.reps = reps;
         this.sets = sets;
         this.rpe = rpe;
-        this.exerciseType = exerciseType;
+        this.type = type;
     }
 
-    public String getExerciseName() {
-        return exerciseName;
-    }
+    public String getName() { return name; }
+    public int getReps() { return reps; }
+    public int getSets() { return sets; }
+    public int getRpe() { return rpe; }
+    public TypeOfExercise getType() { return type; }
 
-    public int getReps() {
-        return reps;
-    }
+    public void setName(String name) { this.name = name; }
+    public void setReps(int reps) { this.reps = reps; }
+    public void setSets(int sets) { this.sets = sets; }
+    public void setRpe(int rpe) { this.rpe = rpe; }
+    public void setType(TypeOfExercise type) { this.type = type; }
 
-    public int getSets() {
-        return sets;
-    }
-
-    public int getRpe() {
-        return rpe;
-    }
-
-    public TypeOfExercise getExerciseType() {
-        return exerciseType;
-    }
-    
     @Override
-    public String toString(){
-        StringBuilder sb = new StringBuilder(exerciseName);
-        sb.append(reps);
-        sb.append(sets);
-        sb.append(rpe);
-        sb.append(exerciseType);
-        return sb.toString();
+    public String toString() {
+        return name + " | " + sets + "x" + reps + " | RPE " + rpe + " | " + type;
     }
-
-    
-
-
-
 }
