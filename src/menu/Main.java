@@ -1,21 +1,15 @@
 package menu;
 
-import java.util.*;
-
 import exercisetracker.*;
+import java.util.*;
 import macrotracker.*;
 
 public class Main {
+
     static Scanner sc = new Scanner(System.in);
 
     static ArrayList<Day> foodDays = new ArrayList<>();
     static ArrayList<Workout> workouts = new ArrayList<>();
-
-
-    protected int calGoal;
-    protected int carbGoal;
-    protected int fatGoal;
-    protected int proteinGoal;
 
     public static void main(String[] args) {
 
@@ -36,29 +30,26 @@ public class Main {
             String choice = sc.nextLine();
 
             switch (choice) {
-
-                case "1":
-                    foodLog();
-                    break;
-
-                case "2":
-                    viewFoodLog();
-                    break;
-
-                case "3":
-                    workoutLog();
-                    break;
-
-                case "4":
-                    viewWorkouts();
-                    break;
-
-                case "5":
+                case "1" -> foodLog();
+                case "2" -> viewFoodLog();
+                case "3" -> workoutLog();
+                case "4" -> viewWorkouts();
+                case "5" -> {
                     System.out.println("Goodbye!");
                     return;
+                }
+                default -> System.out.println("Invalid option.");
+            }
+        }
+    }
 
-                default:
-                    System.out.println("Invalid option.");
+    static int readInt(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                return Integer.parseInt(sc.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
             }
         }
     }
@@ -66,8 +57,15 @@ public class Main {
     // ================= FOOD LOG =================
     static void foodLog() {
 
-        System.out.print("Enter date (e.g. Monday): ");
-        Day day = new Day(sc.nextLine());
+        System.out.print("Enter date: ");
+        String date = sc.nextLine();
+
+        int cal     = readInt("Enter calorie goal: ");
+        int carb    = readInt("Enter carb goal: ");
+        int fat     = readInt("Enter fat goal: ");
+        int protein = readInt("Enter protein goal: ");
+
+        Day day = new Day(date, cal, carb, fat, protein);
         foodDays.add(day);
 
         while (true) {
@@ -82,34 +80,8 @@ public class Main {
             if (input.equals("0")) return;
 
             if (input.equals("1")) {
-
-                System.out.print("Meal name: ");
-                Meal meal = new Meal(sc.nextLine());
-
-                System.out.print("How many foods? ");
-                int count = Integer.parseInt(sc.nextLine());
-
-                for (int i = 0; i < count; i++) {
-
-                    System.out.print("Food name: ");
-                    String name = sc.nextLine();
-
-                    System.out.print("Calories: ");
-                    int cal = Integer.parseInt(sc.nextLine());
-
-                    System.out.print("Protein (g): ");
-                    int protein = Integer.parseInt(sc.nextLine());
-
-                    System.out.print("Carbs (g): ");
-                    int carbs = Integer.parseInt(sc.nextLine());
-
-                    System.out.print("Fat (g): ");
-                    int fat = Integer.parseInt(sc.nextLine());
-
-                    meal.addFood(new Food(name, cal, protein, carbs, fat));
-                }
-
-                day.addMeal(meal);
+                int numFoods = readInt("How many foods in this meal? ");
+                day.addMeal(numFoods);
                 System.out.println("Meal added!");
             }
         }
@@ -120,8 +92,12 @@ public class Main {
 
         System.out.println("\n===== FOOD HISTORY =====");
 
-        for (Day d : foodDays) {
-            System.out.println(d.toString());
+        if (foodDays.isEmpty()) {
+            System.out.println("No food entries yet.");
+        } else {
+            for (Day d : foodDays) {
+                System.out.println(d);
+            }
         }
 
         System.out.println("\nPress Enter to go back...");
@@ -151,21 +127,21 @@ public class Main {
                 System.out.print("Exercise name: ");
                 String name = sc.nextLine();
 
-                System.out.print("Reps: ");
-                int reps = Integer.parseInt(sc.nextLine());
+                int reps = readInt("Reps: ");
+                int sets = readInt("Sets: ");
+                int rpe  = readInt("RPE: ");
 
-                System.out.print("Sets: ");
-                int sets = Integer.parseInt(sc.nextLine());
-
-                System.out.print("RPE: ");
-                int rpe = Integer.parseInt(sc.nextLine());
-
-                System.out.print("Type (CHEST, BACK, LEGS, SHOULDERS, ARMS): ");
-                TypeOfExercise type =
-                        TypeOfExercise.valueOf(sc.nextLine().toUpperCase());
+                TypeOfExercise type = null;
+                while (type == null) {
+                    System.out.print("Type (CHEST, BACK, LEGS, SHOULDERS, ARMS): ");
+                    try {
+                        type = TypeOfExercise.valueOf(sc.nextLine().toUpperCase().trim());
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Invalid type. Choose from: CHEST, BACK, LEGS, SHOULDERS, ARMS");
+                    }
+                }
 
                 workout.addExercise(new Exercise(name, reps, sets, rpe, type));
-
                 System.out.println("Exercise added!");
             }
         }
@@ -176,8 +152,12 @@ public class Main {
 
         System.out.println("\n===== WORKOUT HISTORY =====");
 
-        for (Workout w : workouts) {
-            w.display();
+        if (workouts.isEmpty()) {
+            System.out.println("No workout entries yet.");
+        } else {
+            for (Workout w : workouts) {
+                w.display();
+            }
         }
 
         System.out.println("\nPress Enter to go back...");
