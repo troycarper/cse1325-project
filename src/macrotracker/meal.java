@@ -1,6 +1,7 @@
 package macrotracker;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class Meal{
     ArrayList<Food> foods;
     MealType mealType;

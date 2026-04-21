@@ -18,7 +18,21 @@ public class Day{
         this.remainingCarb = remainingCarb;
         this.remainingFat = remainingFat;   
         }
+    public int getRemainingCal() {
+    return remainingCal;
+}
 
+    public int getRemainingCarb() {
+    return remainingCarb;
+}
+
+    public int getRemainingFat() {
+        return remainingFat;
+}
+
+    public int getRemainingProtein() {
+        return remainingProtein;
+}
     public void addMeal(int numFoods){
         MealType mealType = MealType.Breakfast;  
         int userInput;

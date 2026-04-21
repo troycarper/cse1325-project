@@ -79,6 +79,10 @@ public class Main {
                 int numFoods = readInt("How many foods in this meal? ");
                 day.addMeal(numFoods);
                 System.out.println("Meal added!");
+                System.out.println("You have " + day.getRemainingCal() + " calories remaining until your goal");
+                System.out.println("You have " + day.getRemainingCarb() + " carbs remaining until your goal");
+                System.out.println("You have " + day.getRemainingFat() + " grams of fat remaining until your goal");
+                System.out.println("You have " + day.getRemainingProtein() + " grams of protein remaining until your goal");
             }
         }
     }
