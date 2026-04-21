@@ -13,9 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("======================================");
         System.out.println(" Community Fitness & Wellness Tracker ");
-        System.out.println("======================================");
 
         while (true) {
 
@@ -53,8 +51,6 @@ public class Main {
             }
         }
     }
-
-    // ================= FOOD LOG =================
     static void foodLog() {
 
         System.out.print("Enter date: ");
@@ -87,10 +83,9 @@ public class Main {
         }
     }
 
-    // ================= VIEW FOOD =================
     static void viewFoodLog() {
 
-        System.out.println("\n===== FOOD HISTORY =====");
+        System.out.println("\nFOOD HISTORY");
 
         if (foodDays.isEmpty()) {
             System.out.println("No food entries yet.");
@@ -104,7 +99,6 @@ public class Main {
         sc.nextLine();
     }
 
-    // ================= WORKOUT LOG =================
     static void workoutLog() {
 
         System.out.print("Enter workout date: ");
@@ -126,10 +120,15 @@ public class Main {
 
                 System.out.print("Exercise name: ");
                 String name = sc.nextLine();
+                
+                System.out.println("Sets: ");
+                int sets = sc.nextInt();
 
-                int reps = readInt("Reps: ");
-                int sets = readInt("Sets: ");
-                int rpe  = readInt("RPE: ");
+                System.out.println("Reps: ");
+                int reps = sc.nextInt();
+
+                System.out.println("RPE: ");
+                int rpe = sc.nextInt();
 
                 TypeOfExercise type = null;
                 while (type == null) {
@@ -147,10 +146,9 @@ public class Main {
         }
     }
 
-    // ================= VIEW WORKOUT =================
     static void viewWorkouts() {
 
-        System.out.println("\n===== WORKOUT HISTORY =====");
+        System.out.println("\nWORKOUT HISTORY");
 
         if (workouts.isEmpty()) {
             System.out.println("No workout entries yet.");
