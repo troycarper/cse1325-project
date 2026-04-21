@@ -1,8 +1,6 @@
 package macrotracker;
 import java.util.ArrayList;
-enum MealType{
-    Breakfast,Lunch,Dinner,Snack
-}
+
 public class Meal{
     ArrayList<Food> foods;
     protected MealType mealType;
@@ -10,6 +8,10 @@ public class Meal{
     protected int totalProtein;
     protected int totalFat;
     protected int totalCarbs;
+
+    public Meal(MealType mealType){
+        this.mealType = mealType;
+    }
 
     public Meal(MealType mealType,int totalCals, int totalCarbs, int totalFat, int totalProtein){
         this.mealType = mealType;

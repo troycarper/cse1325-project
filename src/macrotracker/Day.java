@@ -11,7 +11,13 @@ public class Day{
         //might be able to use the free constructor
     }
 
-    public void addMeal(Meal meal){
+    public void addMeal(int numFoods){
+        MealType mealType = Breakfest;
+        int userInput;
+        System.out.println("What meal is this\n1.Breakfest\n2.Lunch\n3.Dinner\n3.snack)");
+        
+        
+        Meal meal = new Meal(mealType);
         meals.add(meal);
         calGoal = calGoal - meal.totalCals;
         carbGoal = carbGoal - meal.totalCarbs;
