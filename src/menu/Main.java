@@ -6,11 +6,16 @@ import exercisetracker.*;
 import macrotracker.*;
 
 public class Main {
-
     static Scanner sc = new Scanner(System.in);
 
     static ArrayList<Day> foodDays = new ArrayList<>();
     static ArrayList<Workout> workouts = new ArrayList<>();
+
+
+    protected int calGoal;
+    protected int carbGoal;
+    protected int fatGoal;
+    protected int proteinGoal;
 
     public static void main(String[] args) {
 
@@ -116,7 +121,7 @@ public class Main {
         System.out.println("\n===== FOOD HISTORY =====");
 
         for (Day d : foodDays) {
-            d.display();
+            System.out.println(d.toString());
         }
 
         System.out.println("\nPress Enter to go back...");

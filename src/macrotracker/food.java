@@ -17,6 +17,9 @@ public class Food{
         this.fat = fat;
         this.carb = carb;
     }
+    public Food (){
+
+    }
 
 public String getName() {
     return name;
@@ -38,12 +41,33 @@ public int getCarb() {
     return carb;
 }
 
+public void setName(String name) {
+    this.name = name;
+}
+
+public void setCalories(int calories) {
+    this.calories = calories;
+}
+
+public void setProtein(int protein) {
+    this.protein = protein;
+}
+
+public void setFat(int fat) {
+    this.fat = fat;
+}
+
+public void setCarb(int carb) {
+    this.carb = carb;
+}
+
 public void saveFood() {
     try {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("food.txt", true)); // true = append
-        writer.write(this.toString());
-        writer.newLine(); // move to next line
-        writer.close();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("food.txt", true)) // true = append
+        ) {
+            writer.write(this.toString());
+            writer.newLine(); // move to next line
+        }
     } catch (IOException e) {
         System.out.println("Error saving food to file.");
     }

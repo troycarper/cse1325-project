@@ -1,4 +1,4 @@
 package macrotracker;
-enum MealType{
+public enum MealType{
     Breakfast,Lunch,Dinner,Snack
 }
