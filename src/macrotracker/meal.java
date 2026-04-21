@@ -1,9 +1,8 @@
 package macrotracker;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 public class Meal{
-    ArrayList<Food> foods;
+    ArrayList<Food> foods = new ArrayList<>();
     MealType mealType;
 
     protected int totalCals;
@@ -26,7 +25,10 @@ public class Meal{
     public void addFood(){
         Food food = new Food();
         Scanner scanner = new Scanner(System.in);
-
+        
+        System.out.print("Enter name: ");
+        food.setName(scanner.nextLine());
+        
         System.out.print("Enter calories: ");
         food.setCalories(scanner.nextInt());
 
@@ -41,8 +43,7 @@ public class Meal{
 
         scanner.nextLine(); 
 
-        System.out.print("Enter name: ");
-        food.setName(scanner.nextLine());
+        
 
         
         foods.add(food);
@@ -56,8 +57,10 @@ public class Meal{
     @Override 
     public String toString(){
         StringBuilder sb = new StringBuilder(mealType.toString());
+        sb.append("\n");
        for (Food food : foods) {
            sb.append(food.toString());
+           sb.append("\n");
        }
         return sb.toString();
     }

@@ -125,20 +125,23 @@ public class Main {
                 System.out.print("Exercise name: ");
                 String name = sc.nextLine();
                 
-                System.out.println("Sets: ");
+                System.out.print("Sets: ");
                 int sets = sc.nextInt();
 
-                System.out.println("Reps: ");
+                System.out.print("Reps: ");
                 int reps = sc.nextInt();
 
-                System.out.println("RPE: ");
+                System.out.print("RPE: ");
                 int rpe = sc.nextInt();
 
                 TypeOfExercise type = null;
+
+                sc.nextLine();
+
                 while (type == null) {
                     System.out.print("Type (CHEST, BACK, LEGS, SHOULDERS, ARMS): ");
                     try {
-                        type = TypeOfExercise.valueOf(sc.nextLine().toUpperCase().trim());
+                        type = TypeOfExercise.valueOf(sc.nextLine().toUpperCase());
                     } catch (IllegalArgumentException e) {
                         System.out.println("Invalid type. Choose from: CHEST, BACK, LEGS, SHOULDERS, ARMS");
                     }

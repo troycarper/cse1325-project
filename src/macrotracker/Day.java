@@ -2,7 +2,7 @@ package macrotracker;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Day{
-    ArrayList<Meal> meals;
+    ArrayList<Meal> meals = new ArrayList<>();
     protected String date;
    
     protected int remainingCal;
@@ -37,7 +37,7 @@ public class Day{
         MealType mealType = MealType.Breakfast;  
         int userInput;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("What meal is this\n1.Breakfest\n2.Lunch\n3.Dinner\n3.snack)");
+        System.out.println("What meal is this\n1.Breakfest\n2.Lunch\n3.Dinner\n3.snack\n");
         userInput = scanner.nextInt();
         switch (userInput) {
             case 1 -> {
@@ -68,7 +68,7 @@ public class Day{
     
     @Override 
     public String toString(){
-        StringBuilder sb = new StringBuilder(date);
+        StringBuilder sb = new StringBuilder(date+"\n");
        for (Meal meal : meals) {
            sb.append(meal.toString());
        }
