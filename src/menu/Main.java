@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println(" Community Fitness & Wellness Tracker ");
+        System.out.println("\n\nCommunity Fitness & Wellness Tracker ");
 
         while (true) {
 
@@ -95,7 +95,7 @@ public class Main {
             System.out.println("No food entries yet.");
         } else {
             for (Day d : foodDays) {
-                System.out.println(d);
+                System.out.println(d+"\n");
             }
         }
 

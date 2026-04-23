@@ -35,7 +35,7 @@ public class Workout {
     }
 
     public void display() {
-        System.out.println("\n===== WORKOUT: " + date + " =====");
+        System.out.println("\nWORKOUT: " + date);
 
         for (int i = 0; i < exercises.size(); i++) {
             System.out.println(i + ". " + exercises.get(i));

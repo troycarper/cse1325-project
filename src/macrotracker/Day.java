@@ -37,7 +37,7 @@ public class Day{
         MealType mealType = MealType.Breakfast;  
         int userInput;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("What meal is this\n1.Breakfest\n2.Lunch\n3.Dinner\n3.snack\n");
+        System.out.println("What meal is this\n1.Breakfest\n2.Lunch\n3.Dinner\n3.snack");
         userInput = scanner.nextInt();
         switch (userInput) {
             case 1 -> {
