@@ -1,8 +1,16 @@
 package menu;
 
 import exercisetracker.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 import macrotracker.*;
+
+
+
 
 public class Main {
 
@@ -22,7 +30,9 @@ public class Main {
             System.out.println("2. View Food Log (History)");
             System.out.println("3. Workout Log");
             System.out.println("4. View Workout Log (History)");
-            System.out.println("5. Exit");
+            System.out.println("5. Save Days of eating");
+            System.out.println("6. Load Days of eating");
+            System.out.println("7. Exit");
             System.out.print("Choice: ");
 
             String choice = sc.nextLine();
@@ -32,7 +42,10 @@ public class Main {
                 case "2" -> viewFoodLog();
                 case "3" -> workoutLog();
                 case "4" -> viewWorkouts();
-                case "5" -> {
+                case "5" -> saveFoodDays();
+                case "6" -> loadFoodDays();
+
+                case "7" -> {
                     System.out.println("Goodbye!");
                     return;
                 }
@@ -168,4 +181,44 @@ public class Main {
         System.out.println("\nPress Enter to go back...");
         sc.nextLine();
     }
+    static void saveFoodDays() {
+    try (PrintWriter writer = new PrintWriter(new FileWriter("days_index.txt"))) {
+
+        writer.println(foodDays.size()); // save how many days
+
+        for (int i = 0; i < foodDays.size(); i++) {
+            String filename = "day_" + i + ".txt";
+            writer.println(filename);
+
+            foodDays.get(i).saveToFile(filename); // 🔥 USES YOUR Day METHOD
+        }
+
+        System.out.println("Food days saved!");
+
+    } catch (IOException e) {
+        System.out.println("Error saving: " + e.getMessage());
+    }
+}
+
+static void loadFoodDays() {
+    try {
+        Scanner scanner = new Scanner(new File("days_index.txt"));
+
+        int numDays = Integer.parseInt(scanner.nextLine());
+
+        for (int i = 0; i < numDays; i++) {
+            String filename = scanner.nextLine();
+
+            Day day = new Day(filename); // 🔥 USES YOUR CONSTRUCTOR
+            foodDays.add(day);
+        }
+
+        scanner.close();
+        System.out.println("Food days loaded!");
+
+    } catch (FileNotFoundException e) {
+        System.out.println("No save data found (starting fresh).");
+    }
+}
+
 }

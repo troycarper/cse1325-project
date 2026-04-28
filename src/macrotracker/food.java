@@ -2,6 +2,7 @@ package macrotracker;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Food{
     protected String name;
@@ -17,6 +18,14 @@ public class Food{
         this.fat = fat;
         this.carb = carb;
     }
+    public Food(Scanner scanner) {
+    this.name = scanner.nextLine();
+    this.calories = Integer.parseInt(scanner.nextLine());
+    this.protein = Integer.parseInt(scanner.nextLine());
+    this.fat = Integer.parseInt(scanner.nextLine());
+    this.carb = Integer.parseInt(scanner.nextLine());
+}
+
     public Food (){
 
     }
@@ -81,6 +90,14 @@ public String toString() {
             ", Fat=" + fat + "g" +
             ", Carbs=" + carb + "g" +
             '}';
+}
+
+public String toFileString() {
+    return name + "\n" +
+           calories + "\n" +
+           protein + "\n" +
+           fat + "\n" +
+           carb + "\n";
 }
 
 }

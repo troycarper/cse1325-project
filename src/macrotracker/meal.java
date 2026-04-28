@@ -14,6 +14,28 @@ public class Meal{
         this.mealType = mealType;
     }
 
+    public Meal(Scanner scanner) {
+    foods = new ArrayList<>();
+
+    // Read meal type
+    this.mealType = MealType.valueOf(scanner.nextLine());
+
+    // Read totals
+    this.totalCals = Integer.parseInt(scanner.nextLine());
+    this.totalCarbs = Integer.parseInt(scanner.nextLine());
+    this.totalFat = Integer.parseInt(scanner.nextLine());
+    this.totalProtein = Integer.parseInt(scanner.nextLine());
+
+    // Read number of foods
+    int numFoods = Integer.parseInt(scanner.nextLine());
+
+    // Read each food
+    for (int i = 0; i < numFoods; i++) {
+        Food food = new Food(scanner); // requires Food scanner constructor
+        foods.add(food);
+    }
+}
+
     public Meal(MealType mealType,int totalCals, int totalCarbs, int totalFat, int totalProtein){
         this.mealType = mealType;
         this.totalCals = totalCals;
@@ -64,6 +86,24 @@ public class Meal{
        }
         return sb.toString();
     }
+
+    public String toFileString() {
+    StringBuilder sb = new StringBuilder();
+
+    sb.append(mealType).append("\n");     // Breakfast, Lunch, etc.
+    sb.append(totalCals).append("\n");
+    sb.append(totalCarbs).append("\n");
+    sb.append(totalFat).append("\n");
+    sb.append(totalProtein).append("\n");
+
+    sb.append(foods.size()).append("\n");
+
+    for (Food f : foods) {
+        sb.append(f.toFileString());
+    }
+
+    return sb.toString();
+}
 
         
 }
